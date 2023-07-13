@@ -11,15 +11,22 @@ jest.mock('react-router-dom', () => ({
 
 describe("Card", () => {
     it("Car Name:", () => {
-        render(<Card1 Card1={Card1} />);
-        const question1=screen.getAllByText(/CAR NAME/i);
+        render(<Card1 />);
+        const question1=screen.getByText(/CAR NAME/i);
         expect(question1).toBeInTheDocument();
     });
 
-    it("Rent NOW!", () => {
+    it("Short Description", () => {
         render(
             <Card1 />
         );
         expect(screen.getByRole("button", { name: "Rent Now" })).toBeInTheDocument();
+    });
+    it("Rent NOW!", () => {
+        render(
+            <Card1 />
+        );
+        const question1=screen.getByText(/Short Description: Unleash unrivaled power and elegance with the Bugatti Chiron Super Sport, a master piece of performance and luxury./i);
+        expect(question1).toBeInTheDocument();
     });
 });
