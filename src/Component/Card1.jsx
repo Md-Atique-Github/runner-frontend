@@ -19,17 +19,17 @@ const Card1 = () => {
             <div style={{ margin: "25px", display: "flex", flexDirection: "column" }}>
                 {card.map((h) => (
                     <div class="card" style={{
-                        //  width: '18rem' ,
+                        
                         display: 'flex', flexDirection: 'row'
                     }}>
                         <img src={h.imageLink} width="500px"
-                        // class="card-img-top"
+                        
                         />
 
                         <div class="card-body" style={{ display: "flex", flexDirection: "column", marginTop: '100px' }}>
                             <Link to={`/Details2/${h.id}`}><h5 class="card-title">CAR NAME: {h.nameOfCar.toUpperCase()}</h5></Link>
                             <p
-                            // class="card-text"
+                          
                             >
                                 <strong>Short Description: </strong>
                                 {h.shortDescription}</p>

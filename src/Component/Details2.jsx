@@ -37,7 +37,7 @@ const Details2 = () => {
                         <Link to={`/Form3/${carDetail.id}`}>
                             <button>Rent Me</button>
                         </Link>
-                        {/* Add more details as needed */}
+                       
                     </div>
                 </div>
             </div>
