@@ -1,11 +1,12 @@
 import React from 'react'
+import logo from './logo.png'
 
 const Navbar = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    < img src="https://raw.githubusercontent.com/jeff-lent/roadrunnercars/main/logo.png" width="100px" height="70px" />
+                    < img src={logo} width="100px" height="70px" />
                 </div>
             </nav>
         </>

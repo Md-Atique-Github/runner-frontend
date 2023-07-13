@@ -1,8 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Form3 = () => {
 
@@ -10,15 +7,17 @@ const Form3 = () => {
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
     const [driverLicenseNo, setDriverLicenseNo] = useState('');
-    const [damageWavier, setDamageWavier] = useState('');
+    // const [damageWavier, setDamageWavier] = useState('');
     const [pickUp, setPickUp] = useState(null);
     const [dropOff, setDropOff] = useState(null);
-    
-
+    const [insurance, setInsuarance] = useState(false);
+    // const [insurancePrice, setInsuarancePrice] = useState(0);
     const [carDetail, setCarDetail] = useState([]);
-    const [damage, setdamage] = useState(false);
     const nav = useNavigate()
     const { id } = useParams();
+
+    const [totalPrice, setTotalPrice] = useState(null);
+    const [subTotal, setSubTotal] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:8080/RoadRunner/get/${id}`)
@@ -31,16 +30,16 @@ const Form3 = () => {
         e.preventDefault();
 
         const bookingData = {
-            name:name,
-            address:address,
-            phone:phone,
-            driverLicenseNo:driverLicenseNo,
-            damageWavier:damageWavier,
-            pickUp:pickUp,
-            dropOff:dropOff
-    }
+            name: name,
+            address: address,
+            phone: phone,
+            driverLicenseNo: driverLicenseNo,
+            insurance: insurance,
+            pickUp: pickUp,
+            dropOff: dropOff
+        }
 
-    fetch("http://localhost:8080/user/post", {
+        fetch("http://localhost:8080/user/post", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -56,18 +55,35 @@ const Form3 = () => {
             });
         console.log('hello')
         nav(`/Checkout4/${carDetail.id}`)
-
     };
+    const handlecheck = (check) => {
+        // setcheck(e.target.checked);
+        if (check) {
+            setInsuarance(insurance)
+            const pick = new Date(pickUp);
+            const drop = new Date(dropOff);
+            const totaltime = Math.floor((drop - pick) / (1000 * 60 * 60 * 24)) + 1;
+            const abc = totalPrice + (totaltime * 15000)
+            setSubTotal(abc)
+            console.log({ abc })
+        }
+        else {
+            setSubTotal(null)
+        }
+    }
 
-    // useEffect(()=>{
-    //     if(arrivalDate && departureDate){
-    //         console.log(arrivalDate, departureDate)
-    //         const arival = new Date(arrivalDate);
-    //         const departure = new Date(departureDate);
-    //         const totalNights = ((departure - arival) / (1000 * 60 * 60 * 24));
-    //         setTotalPrice(totalNights* hotals.priceOfHotal);
-    // }
-    // },[arrivalDate, departureDate])
+    useEffect(() => {
+        if (pickUp && dropOff) {
+            console.log(pickUp, dropOff)
+            const pick = new Date(pickUp);
+            const drop = new Date(dropOff);
+            const totaltime = Math.floor((drop - pick) / (1000 * 60 * 60 * 24)) + 1;
+            setTotalPrice(totaltime * carDetail.rentalFee);
+        }
+        if (pickUp > dropOff) {
+            setTotalPrice(0);
+        }
+    }, [pickUp, dropOff, insurance])
 
     const handleName = (event) => {
         setName(event.target.value);
@@ -105,53 +121,56 @@ const Form3 = () => {
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name"
-                    onChange={handleName} 
+                        onChange={handleName}
                     />
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" id="address"
-                     onChange={handleAddress} 
+                        onChange={handleAddress}
                     />
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone Number</label>
                     <input type="phone" class="form-control" id="phone"
-                    onChange={handlePhone}
+                        onChange={handlePhone}
                     />
                 </div>
                 <div class="mb-3">
                     <label for="number" class="form-label">License No.</label>
                     <input type="number" class="form-control" id="number"
-                     onChange={handleLicenseNo} 
+                        onChange={handleLicenseNo}
                     />
                 </div>
                 <div class="mb-3">
                     <label for="arivalDate" class="form-label">Pick Date</label>
                     <input type="dateTime-local" class="form-control" id="arivalDate"
-                    onChange={handlePickDate} 
+                        onChange={handlePickDate}
                     />
                 </div>
                 <div class="mb-3">
                     <label for="departureDate" class="form-label">Drop Date</label>
                     <input type="dateTime-local" class="form-control" id="departureDate"
-                    onChange={handleDropDate}
+                        onChange={handleDropDate}
                     />
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" checked={damage} onChange={(e) => { setdamage(e.target.checked) }} />
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1"  onChange={(e) => handlecheck(e.target.checked)} />
                     <label class="form-check-label" for="exampleCheck1">Want Damage Insurance</label>
                 </div>
             </form>
+            <h5>Rent For One Day:
+                {carDetail.rentalFee}
+            </h5>
             <h5>Rent Cost Will Be:
-                {/* {totalPrice} */}
+                {totalPrice}
             </h5>
             <h5>subTotal:
-                {/* {subTotal} */}
+                {subTotal}
             </h5>
             <Link to={`/Checkout4/${carDetail.id}`}> <button type="submit"
-                // onClick={handleSubmit}
-                onClick={handleSubmit} class="btn btn-primary">Submit</button></Link>
+                onClick={handleSubmit}
+                class="btn btn-primary">Submit</button></Link>
         </>
     )
 }
