@@ -27,7 +27,7 @@ const Card1 = () => {
                     />
 
                     <div class="card-body" style={{ display: "flex", flexDirection: "column" , marginTop:'100px'}}>
-                        <Link to={`/Details2/${h.id}`}><h5 class="card-title">Car Name: {h.nameOfCar.toUpperCase()}</h5></Link>
+                        <Link to={`/Details2/${h.id}`}><h5 class="card-title">CAR NAME: {h.nameOfCar.toUpperCase()}</h5></Link>
                         <p
                         // class="card-text"
                         >

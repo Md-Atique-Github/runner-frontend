@@ -9,10 +9,10 @@ jest.mock('react-router-dom', () => ({
 
 
 
-describe("MiniCard", () => {
-    test("Car Name:", () => {
-        render(<Card1 />);
-        const question1=screen.getByText(/Car Name:/);
+describe("Card", () => {
+    it("Car Name:", () => {
+        render(<Card1 Card1={Card1} />);
+        const question1=screen.getAllByText(/CAR NAME/i);
         expect(question1).toBeInTheDocument();
     });
 
