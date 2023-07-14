@@ -26,12 +26,13 @@ const Form3 = () => {
         let prevData = localStorage.getItem("bookData");
         prevData = JSON.parse(prevData);
         if (prevData) {
-            setName(prevData.name || '');
-            setAddress(prevData.address || '');
-            setPhone(prevData.phone || '');
-            setDriverLicenseNo(prevData.driverLicenseNo || '');
-            setPickUp(prevData.pickUp || null);
-            setDropOff(prevData.dropOff || null);
+            setName(prevData?.name || '');
+            setAddress(prevData?.address || '');
+            setPhone(prevData?.phone || '');
+            setDriverLicenseNo(prevData?.driverLicenseNo || '');
+            setPickUp(prevData?.pickUp || null);
+            setDropOff(prevData?.dropOff || null);
+            setInsurance(prevData?.setInsurance || '');
         }
     }, [id]);
 
@@ -47,6 +48,7 @@ const Form3 = () => {
             pickUp: pickUp,
             dropOff: dropOff
         };
+        console.log(bookingData)
 
         fetch("http://localhost:8080/user/post", {
             method: "POST",
@@ -68,7 +70,7 @@ const Form3 = () => {
 
     const handleCheck = (check) => {
         if (check) {
-            setInsurance(insurance);
+            setInsurance(!insurance);
             const pick = new Date(pickUp);
             const drop = new Date(dropOff);
             const totaltime = Math.floor((drop - pick) / (1000 * 60 * 60 * 24)) + 1;
@@ -124,7 +126,8 @@ const Form3 = () => {
             phone: phone,
             driverLicenseNo: driverLicenseNo,
             pickUp: pickUp,
-            dropOff: dropOff
+            dropOff: dropOff,
+            insurance:insurance
         };
 
         localStorage.setItem("bookData", JSON.stringify(bookData));

@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import React from "react";
 import Card1 from './Card1';
 import '@testing-library/jest-dom'
+import { MemoryRouter } from 'react-router-dom';
 
 jest.mock('react-router-dom', () => ({
     useNavigate: () => jest.fn(),
@@ -12,7 +13,7 @@ jest.mock('react-router-dom', () => ({
 
 describe("Card", () => {
     it("Car Name:", () => {
-         render(<Card1 />);
+         render(<MemoryRouter><Card1 /></MemoryRouter>);
         console.log(screen)
         const question1=screen.getByText(/CAR NAME:/i);
         expect(question1).toBeInTheDocument();
