@@ -127,7 +127,7 @@ const Form3 = () => {
             driverLicenseNo: driverLicenseNo,
             pickUp: pickUp,
             dropOff: dropOff,
-            insurance:insurance
+            insurance: insurance
         };
 
         localStorage.setItem("bookData", JSON.stringify(bookData));
@@ -139,7 +139,7 @@ const Form3 = () => {
     return (
         <>
             <form>
-                <div className="card col-md-6 offset-md-3" style={{backgroundColor: "lightgrey",borderRadius:"20px"}}>
+                <div className="card col-md-6 offset-md-3" style={{ backgroundColor: "lightgrey", borderRadius: "20px" }}>
                     <div className="card-body" style={{ display: "flex" }}>
                         <div className="row">
                             <div><img src={carDetail.imageLink} width="120px" height="110px" /></div>
@@ -149,46 +149,46 @@ const Form3 = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{margin:"20px"}}>
-                <div className="mb-3">
-                    <label htmlFor="name" className="form-label" >Name</label>
-                    <input type="text" className="form-control" id="name" onChange={handleName} value={name} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="address" className="form-label">Address</label>
-                    <input type="text" className="form-control" id="address" onChange={handleAddress} value={address} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="phone" className="form-label">Phone Number</label>
-                    <input type="phone" className="form-control" id="phone" onChange={handlePhone} value={phone} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="number" className="form-label">License No.</label>
-                    <input type="text" className="form-control" id="number" onChange={handleLicenseNo} value={driverLicenseNo} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="arivalDate" className="form-label">Pick Date</label>
-                    <input type="datetime-local" className="form-control" id="arivalDate" onChange={handlePickDate} value={pickUp || ''} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="departureDate" className="form-label">Drop Date</label>
-                    <input type="datetime-local" className="form-control" id="departureDate" onChange={handleDropDate} value={dropOff || ''} />
-                </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" onChange={(e) => handleCheck(e.target.checked)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Want Damage Insurance</label>
-                </div>
+                <div style={{ margin: "20px" }}>
+                    <div className="mb-3">
+                        <label htmlFor="name" className="form-label" >Name</label>
+                        <input type="text" className="form-control" id="name" onChange={handleName} value={name} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="address" className="form-label">Address</label>
+                        <input type="text" className="form-control" id="address" onChange={handleAddress} value={address} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="phone" className="form-label">Phone Number</label>
+                        <input type="phone" className="form-control" id="phone" onChange={handlePhone} value={phone} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="number" className="form-label">License No.</label>
+                        <input type="text" className="form-control" id="number" onChange={handleLicenseNo} value={driverLicenseNo} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="arivalDate" className="form-label">Pick Date</label>
+                        <input type="datetime-local" className="form-control" id="arivalDate" onChange={handlePickDate} value={pickUp || ''} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="departureDate" className="form-label">Drop Date</label>
+                        <input type="datetime-local" className="form-control" id="departureDate" onChange={handleDropDate} value={dropOff || ''} />
+                    </div>
+                    <div className="mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" id="exampleCheck1" onChange={(e) => handleCheck(e.target.checked)} />
+                        <label className="form-check-label" htmlFor="exampleCheck1">Want Damage Insurance</label>
+                    </div>
                 </div>
             </form>
-            <div style={{margin:"20px"}}>
-            <h5 >Rent For One Day: {carDetail.rentalFee}</h5>
-            <h5 >Rent Cost Will Be: {totalPrice}</h5>
-            <h5 >subTotal: {subTotal}</h5>
+            <div style={{ margin: "20px" }}>
+                <h5 >Rent For One Day: {carDetail.rentalFee}</h5>
+                <h5 >Rent Cost Will Be: {totalPrice}</h5>
+                <h5 >subTotal: {subTotal}</h5>
             </div>
             <Link to={`/Checkout4/${carDetail.id}`}>
-                <button type="submit" onClick={handleSubmit} className="btn btn-primary"style={{borderRadius:"10px", marginRight:"14px", marginLeft:"7px"}}>Checkout</button>
+                <button type="submit" onClick={handleSubmit} className="btn btn-primary" style={{ borderRadius: "10px", marginRight: "14px", marginLeft: "7px" }}>Checkout</button>
             </Link>
-            <button type="button" onClick={handleLocalStorage} className="btn btn-primary" style={{borderRadius:"10px"}}>Change Car</button>
+            <button type="button" onClick={handleLocalStorage} className="btn btn-primary" style={{ borderRadius: "10px" }}>Change Car</button>
         </>
     );
 };

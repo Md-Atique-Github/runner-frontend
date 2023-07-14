@@ -21,13 +21,13 @@ describe("Card", () => {
 
     it("Rent Now", () => {
         render(
-            <Card1 />
+            <MemoryRouter><Card1 /></MemoryRouter>
         );
         expect(screen.getByRole("button", { name: "Rent Now" })).toBeInTheDocument();
     });
     it("short description", () => {
         render(
-            <Card1 />
+            <MemoryRouter><Card1 /></MemoryRouter>
         );
         const question2=screen.getByText(/Short Description: Unleash unrivaled power and elegance with the Bugatti Chiron Super Sport, a master piece of performance and luxury./i);
         expect(question2).toBeInTheDocument();
