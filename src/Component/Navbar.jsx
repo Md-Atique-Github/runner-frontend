@@ -4,7 +4,7 @@ import logo from './logo.png'
 const Navbar = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
                 <div className="container-fluid">
                     < img src={logo} width="100px" height="70px" />
                 </div>

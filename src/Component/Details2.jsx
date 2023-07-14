@@ -18,9 +18,9 @@ const Details2 = () => {
     return (
         <>
             <div>
-                <div className='card col-md-6 offset-md-3'>
+                <div className='card col-md-6 offset-md-3' style={{backgroundColor: "lightgrey",borderRadius:"20px"}}>
                     <h3 className='text-center'>View Hotal Details</h3>
-                    <div className='card-body'>
+                    <div className='card-body' >
                         <div className='row'>
 
                             <div><img src={carDetail.imageLink} width="400px" height="400px" /></div>

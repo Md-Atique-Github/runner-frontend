@@ -1,4 +1,11 @@
 import Checkout4 from "./Checkout4";
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
+import React from "react";
+
+jest.mock('react-router-dom', () => ({
+    useNavigate: () => jest.fn(),
+  }));
 
 describe("Checkout4", () => {
     it("Thank You:", () => {

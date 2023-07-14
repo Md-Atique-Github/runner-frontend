@@ -1,4 +1,12 @@
 import Form3 from "./Form3";
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
+import React from "react";
+
+
+jest.mock('react-router-dom', () => ({
+    useNavigate: () => jest.fn(),
+  }));
 
 describe("Form3", () => {
     it("Name", () => {

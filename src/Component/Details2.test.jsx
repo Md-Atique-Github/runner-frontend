@@ -1,4 +1,11 @@
 import Details2 from "./Details2";
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
+import React from "react";
+
+jest.mock('react-router-dom', () => ({
+    useNavigate: () => jest.fn(),
+  }));
 
 describe("Details2", () => {
     it("Heading", () => {

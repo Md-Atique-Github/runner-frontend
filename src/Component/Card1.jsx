@@ -16,11 +16,11 @@ const Card1 = () => {
 
     return (
         <>
-            <div style={{ margin: "25px", display: "flex", flexDirection: "column" }}>
+            <div style={{ margin: "25px", display: "flex", flexDirection: "column"  }}>
                 {card.map((h) => (
                     <div class="card" style={{
                         
-                        display: 'flex', flexDirection: 'row'
+                        display: 'flex', flexDirection: 'row',backgroundColor: "lightgrey",borderRadius:"20px"
                     }}>
                         <img src={h.imageLink} width="500px"
                         

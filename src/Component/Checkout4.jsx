@@ -8,10 +8,12 @@ const Checkout4 = () => {
         nav("/");
     };
     return (
-        <div>
+        
+        <div >
             <h3 style={{ justifyContent: 'center', marginLeft: "49%", marginTop: "60px" }}>Thank You</h3>
             <button style={{ marginLeft: "50%" }} type="button" onClick={handlebutton} className="btn btn-primary">Start Over</button>
         </div>
+        
     )
 }
 
